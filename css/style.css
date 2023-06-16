@@ -180,7 +180,7 @@ body {
 #player .big-two,
 #player .small-one,
 #player .small-two {
-  /* background-color: darkgray; */
+  background-color: darkgray;
 }
 
 #player .destroyed {
