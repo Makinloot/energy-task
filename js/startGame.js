@@ -10,6 +10,9 @@ let minutes = 0;
 let hours = 0;
 let results = {}
 
+let playerHits = []
+let hitCount = 0;
+const playerSunkShips = []
 
 function startGame() {
 
@@ -28,9 +31,9 @@ function startGame() {
   }, 1000)
 }
 
-let playerHits = []
-let hitCount = 0;
-const playerSunkShips = []
+// let playerHits = []
+// let hitCount = 0;
+// const playerSunkShips = []
 
 function handleClick(e) {
   if(!gameOver) {

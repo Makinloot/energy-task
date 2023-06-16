@@ -24,6 +24,7 @@
 
 .container {
   width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -271,6 +272,9 @@ body {
 
 
 /* results */
+.rule {
+  padding-top: 3rem;
+}
 .grid {
   width: 100%;
 }
@@ -281,6 +285,9 @@ body {
   grid-template-columns: repeat(4, 1fr);
   margin: .5rem 0;
   padding: .5rem .25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .grid-item:first-of-type {
