@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-user">
+        <div class="name" id="user-name"></div>
+        <div class="change-psw">
+          <a href="./html/reset.html">შეცვალე პაროლი</a>
+        </div>
+      </div>
+    </header>
+
+    <p>წითელი კუბი აღნიშნავს რომ თქვენ მოარტყით გემს, ყვითელი კი ნიშნავს რომ ააცილეთ.</p>
+    <p id="info-display"></p>
+    <div id="time-display"></div>
+  
+    <div id="boards-container">
+      
+    </div>
+  
+    <div>
+      <button id="start-game">დაწყება</button>
+      <a href="/" class="restart-btn">რესტარტი</a>
+      <button id="logout">გამოსვლა</button>
+      <a href="./html/results.html" class="restart-btn">რეიტინგი</a>
+    </div>
+  </div>
+  
+  <script type="module" src="./index.js"></script>
+  <script type="module" src="./js/gameBoard.js"></script>
+  <script type="module" src="./js/startGame.js"></script>
+  <!-- <script type="module" src="./js/gameBoard.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,284 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button,
+.restart-btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: white;
+  display: inline-block;
+}
+button:hover,
+.restart-btn:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible,
+.restart-btn:focus,
+.restart-btn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+/* my styles */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#boards-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+
+/* ship styles */
+.small {
+  width: 20px;
+  height: 10px;
+  margin: 3px;
+}
+
+.big {
+  background-color: yellow;
+}
+
+.small-one,
+.small-two {
+  width: 20px;
+  height: 10px;
+  background-color: rgb(0, 255, 255);
+}
+
+.small-two {
+  background-color: rgb(5, 146, 146);
+}
+
+.big-one,
+.big-two {
+  width: 40px;
+  height: 10px;
+  background-color: rgb(218, 218, 0);
+}
+
+.big-two {
+  background-color: rgb(114, 48, 175);
+}
+.empty {
+  background-color: rgb(218, 218, 0);
+  pointer-events: none;
+}
+
+#player .big-one,
+#player .big-two,
+#player .small-one,
+#player .small-two {
+  background-color: darkgray;
+}
+
+#player .destroyed {
+  background-color: red;
+  pointer-events: none;
+}
+
+
+#time-display {
+  display: flex;
+}
+
+/* board styles */
+.game-board {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+/* header styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.header-user {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  outline: 2px solid;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1.5rem;
+  z-index: 100;
+}
+
+.header-user .name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-user .change-psw {
+  position: absolute;
+  right: 0%;
+  top: 0;
+  font-size: 1rem;
+  padding: 5rem 1rem 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.header-user:hover .change-psw {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.header-user .change-psw a {
+  background-color: darkgray;
+  list-style-type: none;
+  white-space: nowrap;
+  padding: .5rem;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-user .change-psw a:hover {
+  background-color: lightgray;
+}
+
+
+
+/* results */
+.grid {
+  width: 100%;
+}
+
+.grid-item {
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: .5rem 0;
+  padding: .5rem .25rem;
+}
+
+.grid-item:first-of-type {
+  margin: 1rem 0;
+}

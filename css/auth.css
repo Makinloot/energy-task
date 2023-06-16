@@ -1,0 +1,51 @@
+.auth {
+  position: relative;
+}
+
+.auth p {
+  text-align: center;
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+.auth p.error {
+  color: red;
+}
+
+.auth-input-wrapper {
+  width: 270px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-input-wrapper input {
+  height: 32px;
+}
+
+.auth-input-wrapper {
+  margin: 2rem 0;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-buttons a {
+  font-size: 10px;
+}
+
+.auth-buttons .reset-btn {
+  position: absolute;
+  right: 0;
+}
+
+input[type=submit] {
+  padding: 4px 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}

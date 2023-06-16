@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#" class="auth" id="signup-form">
+    <div>
+      <p id="form-heading">გაიარეთ ავტორიზაცია</p>
+      <div class="auth-input-wrapper">
+        <label for="email">მეილი:</label>
+        <input 
+          type="email" 
+          id="email-input" 
+          required
+        />
+      </div>
+      <div class="auth-input-wrapper">
+        <label for="password">პაროლი:</label>
+        <input 
+          type="password" 
+          id="password-input" 
+          required
+        />
+      </div>
+      <div class='auth-buttons'>
+        <a href='./signin.html'>ხარ რეგისტრირებული ?</a>
+        <input type="submit" value="ავტორიზაცია" />
+      </div>
+    </div>
+  </form>
+  <script type="module"></script>
+  <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
