@@ -17,6 +17,8 @@ if(signupForm) {
       if (error.code === "auth/user-not-found") formHeading.innerText = ("მომხმარებელი არ არსებობს");
       else if (error.code === "auth/email-already-in-use") formHeading.innerText = ("მეილი დაკავებულია");
       else formHeading.innerText = ("შეცდომაა, სცადეთ თავიდან");
+
+      formHeading.style.color = 'red'
     }
   })
 } else if(signinForm){
@@ -27,9 +29,9 @@ if(signupForm) {
       window.location.pathname = '/'
     } catch (error) {
       if (error.code === "auth/user-not-found") formHeading.innerText = ("მომხმარებელი არ არსებობს");
-      else if (error.code === "auth/wrong-password")
-        formHeading.innerText = ("შეიყვანეთ სწორი პაროლი");
+      else if (error.code === "auth/wrong-password") formHeading.innerText = ("შეიყვანეთ სწორი პაროლი");
       else formHeading.innerText = ("შეცდომაა, სცადეთ თავიდან");
+      formHeading.style.color = 'red'
     }
   })
 } else if(resetForm) {
@@ -38,9 +40,11 @@ if(signupForm) {
     try {
       await handleResetPsw(email.value)
       document.getElementById('form-heading').innerText = 'ინსტრუქცია გამოგზავნილია მეილზე'
+      formHeading.style.color = 'green'
     } catch (error) {
       if (error.code === "auth/user-not-found") formHeading.innerText = ("მომხმარებელი არ არსებობს");
       else formHeading.innerText = ("შეცდომაა, სცადეთ თავიდან");
+      formHeading.style.color = 'red'
     }
   })
 }
