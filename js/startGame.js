@@ -17,6 +17,7 @@ function startGame() {
   everyBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
   infoDisplay.innerText = 'თამაში დაიწყო'
   startGameBtn.style.display = 'none'
+  document.getElementById('restart-btn').classList.remove('hidden')
   const timer = setInterval(() => {
     updateTimer()
 
