@@ -16,6 +16,7 @@ function startGame() {
   const everyBoardBlocks = document.querySelectorAll('#player div')
   everyBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
   infoDisplay.innerText = 'თამაში დაიწყო'
+  startGameBtn.style.display = 'none'
   const timer = setInterval(() => {
     updateTimer()
 
@@ -50,6 +51,7 @@ function handleClick(e) {
     if(hitCount > 49) {
       gameOver = true
       infoDisplay.innerText = 'თქვენ დამარცხდით'
+      infoDisplay.style.color = 'red'
     }
   }
 }
@@ -101,6 +103,7 @@ function checkScore(userHits, userSunkShips) {
 
   if(playerSunkShips.length === 4) {
     infoDisplay.innerText = 'შენ გაიმარჯვე!'
+    infoDisplay.style.color = 'green'
     gameOver = true
   }
 
