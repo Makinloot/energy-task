@@ -37,6 +37,7 @@ if(signupForm) {
     e.preventDefault()
     try {
       await handleResetPsw(email.value)
+      document.getElementById('form-heading').innerText = 'ინსტრუქცია გამოგზავნილია მეილზე'
     } catch (error) {
       if (error.code === "auth/user-not-found") formHeading.innerText = ("მომხმარებელი არ არსებობს");
       else formHeading.innerText = ("შეცდომაა, სცადეთ თავიდან");
