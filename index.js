@@ -13,7 +13,8 @@ auth.onAuthStateChanged(user => {
       name: user.email.split("@")[0]
     }))
   }
-  else window.location.href = '/html/signin.html'
+  // else window.location.href = '/html/signin.html'
+  else window.location.replace('/html/signin.html')
 })
 
 if(logout){
