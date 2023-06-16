@@ -12,13 +12,7 @@ auth.onAuthStateChanged(user => {
       id: user.uid,
       name: user.email.split("@")[0]
     }))
-  } else {
-    document.getElementById('container').innerHTML = `
-      <div>please <a href="/html/signin.html">sign</a> in or register</div>
-    `
-  }
-  // else window.location.href = '/html/signin.html'
-  // else window.location.replace('/html/signin.html')
+  } else window.location.href = '/html/signin.html'
 })
 
 if(logout){
