@@ -39,7 +39,6 @@ a {
   text-decoration: inherit;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -123,7 +122,6 @@ button:focus-visible,
   }
 }
 
-
 /* my styles */
 body {
   min-height: 100vh;
@@ -132,13 +130,11 @@ body {
   align-items: center;
 }
 
-
 #boards-container {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
 }
-
 
 /* ship styles */
 .small {
@@ -189,15 +185,14 @@ body {
   pointer-events: none;
 }
 
-
 #time-display {
   display: flex;
 }
 
 /* board styles */
 .game-board {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -247,7 +242,7 @@ body {
   padding: 5rem 1rem 1rem;
   opacity: 0;
   pointer-events: none;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .header-user:hover .change-psw {
@@ -259,7 +254,7 @@ body {
   background-color: darkgray;
   list-style-type: none;
   white-space: nowrap;
-  padding: .5rem;
+  padding: 0.5rem;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -268,8 +263,6 @@ body {
 .header-user .change-psw a:hover {
   background-color: lightgray;
 }
-
-
 
 /* results */
 .rule {
@@ -283,8 +276,8 @@ body {
   border: 1px solid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: .5rem 0;
-  padding: .5rem .25rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.25rem;
   justify-content: center;
   align-items: center;
   gap: 2rem;

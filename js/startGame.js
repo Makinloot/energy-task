@@ -1,34 +1,37 @@
-import { pushToDatabase } from "../config/firebase"
+import { pushToDatabase } from "../config/firebase";
 
-const startGameBtn = document.getElementById('start-game')
-const infoDisplay = document.getElementById('info-display')
-const timeDisplay = document.getElementById('time-display')
+const startGameBtn = document.getElementById("start-game");
+const infoDisplay = document.getElementById("info-display");
+const timeDisplay = document.getElementById("time-display");
 
-let gameOver = false
+let gameOver = false;
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
-let results = {}
+let results = {};
 
-let playerHits = []
+let playerHits = [];
 let hitCount = 0;
-const playerSunkShips = []
+const playerSunkShips = [];
 
 function startGame() {
+  const everyBoardBlocks = document.querySelectorAll("#player div");
+  everyBoardBlocks.forEach((block) =>
+    block.addEventListener("click", handleClick)
+  );
+  infoDisplay.innerText = "თამაში დაიწყო";
+  startGameBtn.style.display = "none";
+  document.getElementById("restart-btn").classList.remove("hidden");
 
-  const everyBoardBlocks = document.querySelectorAll('#player div')
-  everyBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
-  infoDisplay.innerText = 'თამაში დაიწყო'
-  startGameBtn.style.display = 'none'
-  document.getElementById('restart-btn').classList.remove('hidden')
+  // document.getElementById("hit-count").innerText = `სვლების რაოდენობა 50, ${hitCount}`;
   const timer = setInterval(() => {
-    updateTimer()
+    updateTimer();
 
-    if(gameOver) {
-      clearInterval(timer)
-      pushToDatabase(results)
+    if (gameOver) {
+      clearInterval(timer);
+      pushToDatabase(results);
     }
-  }, 1000)
+  }, 1000);
 }
 
 // let playerHits = []
@@ -36,85 +39,90 @@ function startGame() {
 // const playerSunkShips = []
 
 function handleClick(e) {
-  if(!gameOver) {
-    if(e.target.classList.contains('taken')) {
-      e.target.classList.add('destroyed')
-      let classes = Array.from(e.target.classList)
-      classes = classes.filter(className => className !== 'block')
-      classes = classes.filter(className => className !== 'destroyed')
-      classes = classes.filter(className => className !== 'taken')
-      playerHits.push(...classes)
-      checkScore(playerHits, playerSunkShips)
+  if (!gameOver) {
+    if (e.target.classList.contains("taken")) {
+      e.target.classList.add("destroyed");
+      let classes = Array.from(e.target.classList);
+      classes = classes.filter((className) => className !== "block");
+      classes = classes.filter((className) => className !== "destroyed");
+      classes = classes.filter((className) => className !== "taken");
+      playerHits.push(...classes);
+      checkScore(playerHits, playerSunkShips);
     }
 
-    if(!e.target.classList.contains('taken')) {
-      e.target.classList.add('empty')
+    if (!e.target.classList.contains("taken")) {
+      e.target.classList.add("empty");
     }
 
-    hitCount++
-    if(hitCount > 49) {
-      gameOver = true
-      infoDisplay.innerText = 'თქვენ დამარცხდით'
-      infoDisplay.style.color = 'red'
+    hitCount++;
+    if (hitCount > 49) {
+      gameOver = true;
+      infoDisplay.innerText = "თქვენ დამარცხდით";
+      infoDisplay.style.color = "red";
     }
   }
 }
 
 function gameResults() {
   results = {
-    id: JSON.parse(localStorage.getItem('user')).id,
-    name: JSON.parse(localStorage.getItem('user')).name,
-    duration: timeDisplay.innerText.split(":\n\n").join(':'),
+    id: JSON.parse(localStorage.getItem("user")).id,
+    name: JSON.parse(localStorage.getItem("user")).name,
+    duration: timeDisplay.innerText.split(":\n\n").join(":"),
     hits: hitCount,
-    result: infoDisplay.innerText === 'შენ გაიმარჯვე!' ? 'გამარჯვება' : 'დამარცხება'
-  }
+    result:
+      infoDisplay.innerText === "შენ გაიმარჯვე!" ? "გამარჯვება" : "დამარცხება",
+  };
 }
 
 function updateTimer() {
   seconds++;
 
-  if(seconds === 60) {
+  if (seconds === 60) {
     seconds = 0;
-    minutes++
+    minutes++;
 
-    if(minutes === 60) {
+    if (minutes === 60) {
       minutes = 0;
-      hours++
+      hours++;
     }
   }
 
-  const formattedTime = `<p>${hours.toString().padStart(2, '0')}:</p>
-  <p>${minutes.toString().padStart(2, '0')}:</p>
-  <p>${seconds.toString().padStart(2, '0')}</p>`;
-  timeDisplay.innerHTML = formattedTime
+  const formattedTime = `<p>${hours.toString().padStart(2, "0")}:</p>
+  <p>${minutes.toString().padStart(2, "0")}:</p>
+  <p>${seconds.toString().padStart(2, "0")}</p>`;
+  timeDisplay.innerHTML = formattedTime;
 }
 
 function checkScore(userHits, userSunkShips) {
-
   const checkShip = (shipName, shipLength) => {
-    if(userHits.filter(storedName => storedName === shipName).length === shipLength) {
-      infoDisplay.textContent = `შენ ჩაძირე ${shipName}`
-      playerHits = userHits.filter(storedName => storedName !== shipName)
-      
-      userSunkShips.push(shipName)
+    if (
+      userHits.filter((storedName) => storedName === shipName).length ===
+      shipLength
+    ) {
+      infoDisplay.textContent = `შენ ჩაძირე ${shipName}`;
+      playerHits = userHits.filter((storedName) => storedName !== shipName);
+
+      userSunkShips.push(shipName);
     }
+  };
+
+  checkShip("big-one", 4);
+  checkShip("big-two", 4);
+  checkShip("small-one", 2);
+  checkShip("small-two", 2);
+
+  if (playerSunkShips.length === 4) {
+    infoDisplay.innerText = "შენ გაიმარჯვე!";
+    infoDisplay.style.color = "green";
+    gameOver = true;
   }
-
-  checkShip('big-one', 4)
-  checkShip('big-two', 4)
-  checkShip('small-one', 2)
-  checkShip('small-two', 2)
-
-  if(playerSunkShips.length === 4) {
-    infoDisplay.innerText = 'შენ გაიმარჯვე!'
-    infoDisplay.style.color = 'green'
-    gameOver = true
-  }
-
 }
 
-window.addEventListener('click', () => {
-  if(gameOver) gameResults()
-})
+window.addEventListener("click", () => {
+  document.getElementById(
+    "hit-count"
+  ).innerText = `სვლების მაქსიმალური რაოდენობა ${hitCount}`;
+  if (gameOver) gameResults();
+});
 
-startGameBtn.addEventListener('click', startGame)
+startGameBtn.addEventListener("click", startGame);
