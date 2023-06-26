@@ -34,10 +34,6 @@ function startGame() {
   }, 1000);
 }
 
-// let playerHits = []
-// let hitCount = 0;
-// const playerSunkShips = []
-
 function handleClick(e) {
   if (!gameOver) {
     if (e.target.classList.contains("taken")) {
@@ -56,7 +52,7 @@ function handleClick(e) {
     hitCount++;
     document.getElementById(
       "hit-count"
-    ).innerText = `სვლების მაქსიმალური რაოდენობა ${hitCount}`;
+    ).innerText = `სვლების რაოდენობა ${hitCount}`;
     if (hitCount > 49) {
       gameOver = true;
       infoDisplay.innerText = "თქვენ დამარცხდით";
@@ -121,9 +117,6 @@ function checkScore(userHits, userSunkShips) {
 }
 
 window.addEventListener("click", () => {
-  // document.getElementById(
-  //   "hit-count"
-  // ).innerText = `სვლების მაქსიმალური რაოდენობა ${hitCount}`;
   if (gameOver) gameResults();
 });
 
